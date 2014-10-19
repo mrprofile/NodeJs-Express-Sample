@@ -1,0 +1,12 @@
+@html.extend('./layout', function(model){
+  @html.block("body", function(model){
+
+    <p>This is from the server</p>
+
+      @if(model.error)
+      {
+        <p>Error occured: @model.error</p>
+        <p>Http status: @model.error.status</p>
+      }
+  })
+})
