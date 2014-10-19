@@ -1,0 +1,21 @@
+﻿@html.extend('./layout', function(model){
+  @html.block("body", function(model){
+
+    <p>This is from the server</p>
+  
+      @if(model.error)
+      {
+        <p>Error occured: @model.error</p>
+      }
+      
+      @model.users.forEach(function(user){
+       <div class="row">
+        <div class="list-group col-lg-6"><span class="badge">
+         @user.name</span>
+         </div>
+       </div>
+
+      })
+  
+  })
+})

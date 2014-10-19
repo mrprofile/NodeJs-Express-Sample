@@ -1,0 +1,20 @@
+{
+  "name": "NodejsBasic",
+  "version": "0.0.0",
+  "description": "NodejsBasic",
+  "main": "server.js",
+  "author": {
+    "name": "501936093",
+    "email": ""
+  },
+  "dependencies": {
+    "bower": "^1.3.12",
+    "express": "^4.9.7",
+    "underscore": "^1.7.0",
+    "vash": "^0.7.12-1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-nodemon": "^0.3.0"
+  }
+}
