@@ -14,6 +14,7 @@
     "express": "^4.9.7",
     "faye": "^1.0.3",
     "faye-redis": "^0.2.0",
+    "ravendb": "0.0.25",
     "redis": "^0.12.1",
     "underscore": "^1.7.0",
     "vash": "^0.7.12-1"
