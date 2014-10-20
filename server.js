@@ -1,15 +1,9 @@
+var bodyParser = require('body-parser');
 var express = require("express");
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var session = require('express-session')
 
 var app = express();
-
-var webControllers = require("./controllers");
-var apiControllers = require("./apicontrollers");
-
-// view engine setup
-app.set('view engine', "vash");
 
 // opt-in services
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,9 +12,21 @@ app.use(cookieParser());
 app.use(session({secret: 'in and out burger'}))
 app.use(express.static(__dirname + "/public"));
 
+var webControllers = require("./controllers");
+var apiControllers = require("./apicontrollers");
+
 // map routes
 webControllers.init(app);
 apiControllers.init(app);
+
+// view engine setup
+app.set('view engine', "vash");
+
+//TEST THIS PIECE OF CODE
+router.post('/testme', function(req, res) {
+    console.log(res.body);
+    res.send('welcome ' + res.body);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
