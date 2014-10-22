@@ -3,48 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
     <title>@model.title</title>
-    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="/css/site.css" rel="stylesheet">
+<!--    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"> -->
+      <link href="http://tv.esquire.com/bundles/style/less/web?v=n1IaCBcO2fAuR-cu4SeLxohsJYjWOT1WA3S1IRB7Ob01" rel="stylesheet"/>
+ <link href="http://tv.esquire.com/bundles/style/less/home?v=PEujNSbvQasPf6l8aYDj_w9CMLhggchGm_3OrJ6V_Qg1" rel="stylesheet"/>
+
+    <link href="/css/esq.css" rel="stylesheet"> 
+    @html.block("css")
   </head>
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Project name</a>
-            </div>
-            <div class="collapse navbar-collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div>
-        </div>
+    <div id="main-wrapper">
+    @html.extend('./header', function (model){})    
 
-        <div class="container">
+    @html.block("featured")
+    @html.block("body")
+    
+    @html.extend('./footer', function(model){})
 
-          <div class="starter-template">
-             <h1>@model.title</h1>
-          @html.block("body")
-
-          </div>
-
-        </div><!-- /.container -->
-
-
-
-
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
+  </div>
+    @html.block("scripts")
+    <!-- <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/lib/underscore/underscore.js"></script>
+    <script src="/lib/underscore/underscore.js"></script> -->
   </body>
 </html>

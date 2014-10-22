@@ -1,0 +1,53 @@
+<header id="main-header">
+    <a href="http://www.esquire.com" id="mobile-home"><div>Back To</div><div>Esquire</div></a>   
+    <div id="header-background">
+ 		<div id="mobile-header"></div>
+ 		 <div id="header-logo">
+            <a href="http://www.esquire.com"><div id="esquire-logo"></div></a>
+        </div>
+    </div>    
+    <div class="page-header">
+        <div id="esquire-nav">
+            <div class="container">
+                <ul>                	
+                    <li class="btn_universe"><a href="http://www.esquire.com/blogs/news/">NEWS</a></li>
+                    <li class="btn_politic"><a href="http://www.esquire.com/blogs/politics/">POLITICS</a></li>
+                    <li class="btn_style"><a href="http://www.esquire.com/blogs/mens-fashion/">STYLE</a></li>
+                    <li class="btn_culture"><a href="http://www.esquire.com/blogs/culture/">ENTERTAINMENT</a></li>
+                    <li class="btn_food"><a href="http://www.esquire.com/blogs/food-for-men/">FOOD &amp; DRINK</a></li>
+                    <li class="btn_women"><a href="http://www.esquire.com/women/">WOMEN</a></li>
+                    <li class="btn_video active"><a class="active" href="http://tv.esquire.com">ESQUIRE TV</a></li>
+                </ul>
+                <div class="search-area">
+                    <form method="get" action="http://www.esquire.com/search/" name="header_search" id="header_search">
+                        <a href="#" id="search_button"></a>
+                        <input type="text" autocomplete="off" class="input" name="q" id="gen_search">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="esquire-nav-tv">
+            <div class="container">
+                <ul>      
+                	<li class="btn_home selected" data_tracking="homepage"><a class="btn_home" data-tracking="homepage" href="/">Esquire TV</a><i class="icon-nav-up-arrow"></i></li>          
+	                <li class="btn_episodes" data_tracking="episodes"><a class="btn_episodes" data-tracking="episodes" href="/now">Full Episodes</a><i class="icon-nav-up-arrow"></i></li>
+                    <li class="btn_schedule" data_tracking="schedule"><a class="btn_schedule" data-tracking="schedule" href="/schedule">Schedule</a><i class="icon-nav-up-arrow"></i></li>
+                    <li class="btn_videos" data_tracking="videos"><a class="btn_videos" data-tracking="videos" href="/videos">Videos</a><i class="icon-nav-up-arrow"></i></li>
+                    <li class="btn_blog" data_tracking="blog"><a class="btn_blog" data-tracking="blog" href="/blog">Blog</a><i class="icon-nav-up-arrow"></i></li>
+    
+                    <li class="btn_locator @@channelFinder"><a class="btn_locator " href="/channelfinder" data-tracking="channel-locator"><i class="icon-tv"></i>Channel Finder</a><i class="icon-nav-up-arrow"></i></li>
+                    <li class="social-small"><a href="https://twitter.com/esqtv" target="_blank"><i class="social-icon-twitter-small"></i></a></li>
+                    <li class="social-small"><a href="https://www.facebook.com/EsquireNetwork" target="_blank" class="logo"><i class="social-icon-facebook-small"></i></a></li>
+                    <li class="social-small"><a href="https://www.youtube.com/esquirenetwork" target="_blank" class="logo"><i class="social-icon-youtube-small"></i></a></li>
+                </ul>
+                <div class="social mobile">
+                    <ul>
+                        <li><a href="https://twitter.com/esqtv" target="_blank"><i class="social-icon-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/EsquireNetwork" target="_blank"><i class="social-icon-facebook"></i></a></li>
+                        <li><a href="https://www.youtube.com/esquirenetwork" target="_blank"><i class="social-icon-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,21 +1,35 @@
 ﻿@html.extend('./layout', function(model){
   @html.block("body", function(model){
-
-    <p>This is from the server</p>
-  
       @if(model.error)
       {
         <p>Error occured: @model.error</p>
       }
       
-      @model.users.forEach(function(user){
-       <div class="row">
-        <div class="list-group col-lg-6"><span class="badge">
-         @user.name</span>
-         </div>
-       </div>
-
+      <div id="wrapper" >
+    <div id="slider" style="margin: 0 auto;">
+      <ul class="slides">
+      @model.sliders.forEach(function(slide){
+        <li class="slide-wrapper" data-src="@slide.BackgroundUrl" data-url="@slide.WebPageUrl">   
+            <img src="@slide.BackgroundUrl" />
+            <div class="slide-link"></div>
+            <a class="transparent-click-area" href="@slide.WebPageUrl"></a>
+        </li>        
       })
+
+    </ul>
+
+    <ul class="slides">
+      @model.slidersAgain.forEach(function(slide){
+        <li class="slide-wrapper" data-src="@slide.BackgroundUrl" data-url="@slide.WebPageUrl">   
+            <img src="@slide.BackgroundUrl" />
+            <div class="slide-link"></div>
+            <a class="transparent-click-area" href="@slide.WebPageUrl"></a>
+        </li>        
+      })
+
+    </ul>
+    </div>
+  </div>
   
   })
 })

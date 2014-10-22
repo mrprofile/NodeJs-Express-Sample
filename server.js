@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var lessMiddleware = require('less-middleware');
 var app = express();
 
 // opt-in services
@@ -10,6 +11,8 @@ var jsonParser = bodyParser.json();
 app.use(jsonParser);
 app.use(cookieParser());
 app.use(session({secret: 'in and out burger'}));
+
+app.use(lessMiddleware(__dirname + '/public'));
 app.use(express.static(__dirname + "/public"));
 
 var webControllers = require("./controllers");
