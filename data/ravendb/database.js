@@ -1,8 +1,8 @@
 (function (database) {
 
     var ravendb = require("ravendb");
-    var ravenUrl = "http://localhost:8080";
-    var dbName = "nodejs";
+    var ravenUrl = "http://10.128.36.191:8080";
+    var dbName = "esqtv";
     var theDb = null;
 
     database.getDb = function(next){

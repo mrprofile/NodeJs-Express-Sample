@@ -1,8 +1,7 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var session = require('express-session')
-
+var session = require('express-session');
 var app = express();
 
 // opt-in services
@@ -10,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var jsonParser = bodyParser.json();
 app.use(jsonParser);
 app.use(cookieParser());
-app.use(session({secret: 'in and out burger'}))
+app.use(session({secret: 'in and out burger'}));
 app.use(express.static(__dirname + "/public"));
 
 var webControllers = require("./controllers");
@@ -22,12 +21,6 @@ apiControllers.init(app);
 
 // view engine setup
 app.set('view engine', "vash");
-
-//TEST THIS PIECE OF CODE
-app.post('/testme', jsonParser,  function(req, res) {
-    console.log("Session: %j", req.body);
-    res.send('welcome ' + req.body.hello);
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
