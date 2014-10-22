@@ -9,41 +9,36 @@
         app.get('/', function(req, res) {
 
             var err = "";
-            var slidersTop = [];
-            var slidersBottom = [];
+            var sliders = [];
+            var showMenuItems = [];
 
             var renderPage = function () {
-                res.render('./home/index', { title: 'Home - Vash View Engine', error: err, sliders: slidersTop, slidersAgain: slidersBottom });
+                res.render('./home/index', { title: 'Home - Vash View Engine', error: err, showMenuItems: showMenuItems, sliders: sliders });
             }
 
             async.parallel({
-                sliders1 : function (callback) {
+                sliders : function (callback) {
                     ravendb.getSliders(function(err, results){
                         callback(null, results);
                     });
                 },
-                sliders2: function (callback) {
-                    ravendb.getSliders(function(err, results){
+                showMenuItems: function (callback) {
+                    ravendb.getShowMenuItems(function(err, results){
                         callback(null, results);
                     });
                 }
             }, function(err, results){
                if(!err) {
-
-                    slidersTop = results.sliders1;
-                    slidersBottom = results.sliders2;
-                    renderPage();
-
+                   sliders = results.sliders;
+                   showMenuItems = results.showMenuItems;
+                   renderPage();
                } 
             });        
         });
-
-
 
         app.get('/contact', function(req, res) {
             res.render('./home/contact', { title: 'Contact - Vash View Engine'});
         });
     };
 
-    
 })(module.exports);
