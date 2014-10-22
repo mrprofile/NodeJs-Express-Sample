@@ -23,4 +23,19 @@
             }
         });
     }
+
+    data.getShowMenuItems = function(next) {
+        database.getDb(function(err, db){
+            if(err)
+            {
+                next(err,null);
+            }
+            else{
+
+                db.getDocument("ShowBox/1", function(err, results){
+                    next(err, results);
+                })
+            }
+        });
+    }
 })(module.exports);
