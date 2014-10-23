@@ -17,6 +17,7 @@
             <a href="http://www.esquire.com"><div id="esquire-logo"></div></a>
         </div>
     </div>    
+    <a href="#" id="mobile-menu"></a>
     <div class="page-header">
         <div id="esquire-nav">
             <div class="container">
