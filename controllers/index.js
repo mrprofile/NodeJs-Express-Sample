@@ -1,9 +1,14 @@
 ﻿(function (controllers) {
-
-    var homeController = require("./homeController");
+    var fs = require("fs");
+    var f = fs.readdirSync("./controllers");
 
     controllers.init = function(app) {
-        homeController.init(app);
+
+        for(var ctrl in f)
+        {
+            if(f[ctrl] != "index.js")
+                require("./" + f[ctrl]).init(app);
+        }
     };
-    
+
 })(module.exports);
