@@ -6,4 +6,8 @@
         next(null, seedData.initialUsers);
     };
 
+    data.getFeatured = function (next) {
+    	next(null, seedData.sliders);	
+    };
+
 })(module.exports);

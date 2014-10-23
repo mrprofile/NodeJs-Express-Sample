@@ -1,5 +1,32 @@
 ﻿@html.extend('./layout', function(model){
   @html.block("body", function(model){
-    <p>This is from the server</p>
+
+<div id="wrapper" >
+    <div id="slider" class="flexslider" style="margin: 0 auto;">
+      <ul class="slides">
+
+  	@model.pageData.forEach(function(slide){
+        <li class="slide-wrapper" data-src="@slide.BackgroundUrl" data-url="@slide.WebPageUrl">   
+            <img src="@slide.BackgroundUrl" />
+            <div class="slide-link"></div>
+            <a class="transparent-click-area" href="@slide.WebPageUrl"></a>
+        </li>       
+      })
+  </ul>
+</div>
+</div>
+  })
+
+  @html.block("scripts", function(model){
+
+  	@{
+  		var data = JSON.stringify( model.pageData );
+  	}
+
+  	<script type="text/javascript">
+  		var PAGEMODEL = @html.raw(data);  		
+  	</script>
+  	<script type="text/javascript" src="lib/require.js" data-main="lib/home.js"></script>
+
   })
 })

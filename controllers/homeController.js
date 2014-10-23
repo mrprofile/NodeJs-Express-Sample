@@ -37,7 +37,12 @@
         });
 
         app.get('/contact', function(req, res) {
-            res.render('./home/contact', { title: 'Contact - Vash View Engine'});
+
+            data.getFeatured(function (err, results){
+                res.render('./home/contact', { title: 'Contact - Vash View Engine', pageData: results});
+            });
+
+            
         });
     };
 
