@@ -13,18 +13,15 @@
   </head>
   <body>
 
-    <div id="main-wrapper">
-    @html.extend('./header', function (model){})    
+    <div id="main-wrapper">      
 
-    @html.block("featured")
-    @html.block("body")
-    
-    @html.extend('./footer', function(model){})
+      @html.include('./header', model)
 
-  </div>
-    @html.block("scripts")
-    <!-- <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/lib/underscore/underscore.js"></script> -->
+      @html.block("featured")
+      @html.block("body")
+      
+      @html.include('./footer', model)
+    </div>
+    @html.block("scripts")    
   </body>
 </html>

@@ -1,12 +1,12 @@
 ﻿@html.extend('./layout', function(model){
   @html.block("body", function(model){
-      @if(model.error)
-      {
-        <p>Error occured: @model.error</p>
-      }
+  @if(model.error)
+  {
+    <p>Error occured: @model.error</p>
+  }
       
-      <div id="wrapper" >
-    <div id="slider" style="margin: 0 auto;">
+  <div id="wrapper" >
+    <div id="slider" class="flexslider" style="margin: 0 auto;">
       <ul class="slides">
       @model.sliders.forEach(function(slide){
         <li class="slide-wrapper" data-src="@slide.BackgroundUrl" data-url="@slide.WebPageUrl">   
@@ -15,21 +15,13 @@
             <a class="transparent-click-area" href="@slide.WebPageUrl"></a>
         </li>        
       })
-
-    </ul>
-
-    <ul class="slides">
-      @model.slidersAgain.forEach(function(slide){
-        <li class="slide-wrapper" data-src="@slide.BackgroundUrl" data-url="@slide.WebPageUrl">   
-            <img src="@slide.BackgroundUrl" />
-            <div class="slide-link"></div>
-            <a class="transparent-click-area" href="@slide.WebPageUrl"></a>
-        </li>        
-      })
-
-    </ul>
+      </ul>    
     </div>
   </div>
   
+  })
+
+  @html.block("scripts", function(model){        
+    <script type="text/javascript" src="lib/require.js" data-main="lib/home.js"></script>
   })
 })

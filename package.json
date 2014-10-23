@@ -21,7 +21,8 @@
     "ravendb": "0.0.25",
     "redis": "^0.12.1",
     "underscore": "^1.7.0",
-    "vash": "^0.7.12-1"
+    "vash": "^0.7.12-1",
+    "extend": "~2.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

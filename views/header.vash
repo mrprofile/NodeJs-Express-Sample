@@ -1,3 +1,14 @@
+@{
+  var showList = model.showMenuItems.PromotedShows.slice(0, 9);
+
+  function isSelected(currentController, expectedController) {
+
+    if(currentController == expectedController) {
+        return ' selected';
+    }
+  }
+}
+         
 <header id="main-header">
     <a href="http://www.esquire.com" id="mobile-home"><div>Back To</div><div>Esquire</div></a>   
     <div id="header-background">
@@ -29,7 +40,57 @@
         <div id="esquire-nav-tv">
             <div class="container">
                 <ul>      
-                	<li class="btn_home selected" data_tracking="homepage"><a class="btn_home" data-tracking="homepage" href="/">Esquire TV</a><i class="icon-nav-up-arrow"></i></li>          
+                	<li class="btn_home @isSelected(model.controller, '/')" data_tracking="homepage"><a class="btn_home" data-tracking="homepage" href="/">Esquire TV</a><i class="icon-nav-up-arrow"></i></li>          
+                	<li class="btn_shows @isSelected(model.controller, 'shows')" data_tracking="shows"><a class="btn_shows" data-tracking="shows" href="/shows">Shows</a><i class="icon-nav-up-arrow"></i>
+                		 <div id="shows-drop-down">
+				              <div id="show-drop-down-wrapper">
+				                  <div id="promoted-shows">
+				                      <ul>
+				                        @model.showMenuItems.TopPromotedShows.forEach(function(item){
+				                          <li>
+				                            <a href="@item.RelativeUrl">
+				                              <div class="promo-show-item">
+				                                <img src="@item.ThumbImage" />
+				                                <div class="promo-show-text show-info small">
+				                                  <span>@item.ShowName</span>
+				                                  <br />
+				                                  <div class="show-info small">
+
+				                                  </div>
+				                                </div>
+				                              </div>
+				                            </a>
+				                          </li>
+				                      })
+				                      </ul>
+				                  </div><!-- end promoted-shows -->
+				                  <div class="shows-list"><!--start shows-list-->
+				                    @for(var i = 0; i < showList.length; i++){
+				                        var show = showList[i];
+				                        if(i==0){
+				                          <ul>
+				                        }
+				                        if(i%5 == 0 && i!=0){
+				                          </ul><ul>
+				                        }
+
+				                        <li>
+				                          <a href="@show.RelativeUrl"><span>@show.ShowName</span></a>
+				                        </li>
+				                        if(i== showList.length -1){
+				                          if(showList.length == 5){
+				                            </ul><ul>
+				                          }
+				                          <li id="show-all"><a class="show-all-link" href="/shows">ALL SHOWS</a></li>
+				                        }
+				                        if (i == showList.length - 1){
+				                          </ul>
+				                        }
+				                    }
+				                  </div><!-- end shows-list -->
+				              </div><!-- end show-drop-down-wrapper -->
+				          </div><!-- end shows-drop-down-->
+                	</li>
 	                <li class="btn_episodes" data_tracking="episodes"><a class="btn_episodes" data-tracking="episodes" href="/now">Full Episodes</a><i class="icon-nav-up-arrow"></i></li>
                     <li class="btn_schedule" data_tracking="schedule"><a class="btn_schedule" data-tracking="schedule" href="/schedule">Schedule</a><i class="icon-nav-up-arrow"></i></li>
                     <li class="btn_videos" data_tracking="videos"><a class="btn_videos" data-tracking="videos" href="/videos">Videos</a><i class="icon-nav-up-arrow"></i></li>

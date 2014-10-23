@@ -24,9 +24,9 @@
   	}
 
   	<script type="text/javascript">
-  		var PAGEMODEL = @html.raw(data);  		
-  	</script>
-  	<script type="text/javascript" src="lib/require.js" data-main="lib/home.js"></script>
+  		var PAGEMODEL = @html.raw(data);  		      
+  	</script>  	
+    <script type="text/javascript" src="lib/require.js" data-main="lib/home.js"></script>
 
   })
 })
