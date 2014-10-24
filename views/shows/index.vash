@@ -1,17 +1,65 @@
 @html.extend('./layout', function(model){
+
+  @html.block("css", function(model){
+   <link rel="stylesheet" type="text/css" href="http://tv.esquire.com/Content/style/less/views/shows.less">
+  })
+
+  @html.block("pageTitle", function (model){
+    @html.include('./modules/pageTitle', "Shows")  
+  })
+
   @html.block("body", function(model){
   @if(model.error)
   {
     <p>Error occured: @model.error</p>
   }
+
+  @{
+    var shows = model.shows.PromotedShows;
+    var topShow = model.shows.TopPromotedShows.splice(0, 1 );
+  }
       
-
-      @model.shows.PromotedShows.forEach(function(show){
-
-        <li>@show.ShowName</li>
-
-      })
-    
+    <div id="wrapper">
+      <div id="main-shows">
+        <div class="container">
+          <div id="show-container">
+            <a href="@topShow[0].RelativeUrl">
+              @html.RenderResizeImageUrl(topShow[0].ThumbImage, 374, 210)
+            </a>
+          </div> <!-- end show-container -->
+          <div id="show-description">
+            <h3 class="uppercase"><a href="@topShow[0].RelativeUrl">@topShow[0].ShowName</a></h3>
+            <div class="show-info medium">
+                @html.RenderTuneIn(@topShow[0].Airtime, "medium")
+            </div>
+            <p>@topShow[0].ShowDescription</p>
+          </div><!-- end show-description -->
+          <div id="right-ad" class="right-item">
+                @* TODO: 
+                    Html.RenderPartial("Shared/Modules/RightAd", Model);   
+                 *@
+            </div><!-- end right-ad -->
+        </div><!-- end container -->
+      </div><!-- end main-shows -->
+      <div id="more-shows">
+        <div class="container">
+          <ul class="other-shows">
+          @model.shows.PromotedShows.forEach(function(show){
+          <li>
+              <a href="@show.RelativeUrl" data-tracking="@show.ShowName.replace(' ','-')">
+                  @html.RenderResizeImageUrl(show.ThumbImage, 244, 137)
+                  <div class="show-info small">
+                      <h4>@show.ShowName</h4>
+                      @html.RenderTuneIn(show.Airtime, "small")
+                  </div>
+              </a>
+          </li>          
+          })    
+         </ul>
+        </div><!-- end container -->
+      </div><!-- end more-shows -->
+    </div><!-- end wrapper -->
+      
   
   })
 

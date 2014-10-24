@@ -1,6 +1,7 @@
 ﻿(function (homeController) {
 
     var ravendb = require("../data/ravendb");
+    var data = require("../data");
     var async = require('async');
     var _ = require('extend');
 
@@ -13,7 +14,7 @@
             var homeObjects = _(true, homeObjects, model.getDefault);
 
             homeObjects["sliders"] = function (callback) {
-                    ravendb.getSliders(function(err, results){
+                    data.getSliders(function(err, results){
                         callback(null, results);
                     });
                 };

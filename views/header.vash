@@ -42,7 +42,7 @@
             <div class="container">
                 <ul>      
                 	<li class="btn_home @isSelected(model.controller, '/')" data_tracking="homepage"><a class="btn_home" data-tracking="homepage" href="/">Esquire TV</a><i class="icon-nav-up-arrow"></i></li>          
-                	<li class="btn_shows @isSelected(model.controller, 'shows')" data_tracking="shows"><a class="btn_shows" data-tracking="shows" href="/shows">Shows</a><i class="icon-nav-up-arrow"></i>
+                	<li class="btn_shows @isSelected(model.controller, '/shows')" data_tracking="shows"><a class="btn_shows" data-tracking="shows" href="/shows">Shows</a><i class="icon-nav-up-arrow"></i>
                 		 <div id="shows-drop-down">
 				              <div id="show-drop-down-wrapper">
 				                  <div id="promoted-shows">

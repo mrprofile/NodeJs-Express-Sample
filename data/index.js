@@ -10,4 +10,8 @@
     	next(null, seedData.shows);
     };
 
+    data.getSliders = function(next) {
+    	next(null, seedData.sliders);
+    };
+
 })(module.exports);

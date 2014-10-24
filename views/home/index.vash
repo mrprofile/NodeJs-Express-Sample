@@ -16,4 +16,10 @@
   @html.block("scripts", function(model){        
     <script type="text/javascript" src="lib/require.js" data-main="lib/home.js"></script>
   })
+
+  @html.block("css", function (model) {
+
+    <link href="http://tv.esquire.com/bundles/style/less/home?v=PEujNSbvQasPf6l8aYDj_w9CMLhggchGm_3OrJ6V_Qg1" rel="stylesheet"/>
+
+  })
 })

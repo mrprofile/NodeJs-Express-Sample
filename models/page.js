@@ -1,4 +1,5 @@
 ﻿var ravendb = require("../data/ravendb");
+var data = require("../data");
 
 function basePageModel(metaData, req) {
     this.metaData = metaData;
@@ -8,7 +9,7 @@ function basePageModel(metaData, req) {
 
 basePageModel.prototype.getDefault =  {
         "showMenuItems": function (callback) {
-            ravendb.getShowMenuItems(function(err, results){
+            data.getFeatured(function(err, results){
                 callback(null, results);
             });
         }

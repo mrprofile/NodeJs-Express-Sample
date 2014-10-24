@@ -23,8 +23,7 @@
 
             async.parallel(homeObjects, function(err, results){
                if(!err) {
-                   model = _(true, model, results);
-                   console.log(model.shows);
+                   model = _(true, model, results);                   
                    res.render('./shows/index', model);
                } 
             });
