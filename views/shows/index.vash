@@ -1,0 +1,21 @@
+@html.extend('./layout', function(model){
+  @html.block("body", function(model){
+  @if(model.error)
+  {
+    <p>Error occured: @model.error</p>
+  }
+      
+
+      @model.shows.PromotedShows.forEach(function(show){
+
+        <li>@show.ShowName</li>
+
+      })
+    
+  
+  })
+
+  @html.block("scripts", function(model){        
+    <script type="text/javascript" src="lib/require.js" data-main="app/views/showsIndex.js"></script>
+  })
+})
