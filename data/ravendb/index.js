@@ -38,4 +38,20 @@
             }
         });
     }
+
+    data.getSchedule = function(next) {
+        database.getDb(function(err, db){
+            if(err)
+            {
+                next(err,null);
+            }
+            else{
+
+                db.getDocument("scheduleData/0", function(err, results){
+                    next(err, results);
+                })
+            }
+        });
+    }
+
 })(module.exports);

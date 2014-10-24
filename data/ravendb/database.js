@@ -5,7 +5,6 @@
     var dbName = "esqtv";
     var theDb = null;
 
-
     ravendb.Database.prototype.queryByIndex = function(index, query, start, count, sort, cb) {
         var url;
         if (start == null) {

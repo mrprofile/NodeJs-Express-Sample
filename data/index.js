@@ -7,7 +7,7 @@
     };
 
     data.getFeatured = function (next) {
-    	next(null, seedData.sliders);	
+    	next(null, seedData.shows);
     };
 
 })(module.exports);
