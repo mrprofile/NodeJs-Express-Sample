@@ -1,0 +1,73 @@
+@html.extend('./layout', function(model){
+
+	@html.block("css", function (model){
+	<link rel="stylesheet" type="text/css" href="http://tv.esquire.com/bundles/style/less/schedule">
+
+	})
+
+	@html.block("pageTitle", function (model){
+		@html.include('./modules/pageTitle', "Schedule")  
+	})
+
+	@html.block("body", function (model){
+
+	@{
+		var _data = model.timeArray;
+		var timePosition = model.timePosition;
+		var schedules = model.schedule;
+		var i = 0;	
+		var weekday = new Array(7);
+		weekday[0]=  "Sunday";
+		weekday[1] = "Monday";
+		weekday[2] = "Tuesday";
+		weekday[3] = "Wednesday";
+		weekday[4] = "Thursday";
+		weekday[5] = "Friday";
+		weekday[6] = "Saturday";
+    }
+
+ 		<div id="wrapper">
+ 			<div id="main-container">
+ 				<div id="top-container">
+					<a class="jump-link" href="#">
+		                <div id="jumpText">
+		                    <p>JUMP TO NOW<i class="icon-right-arrow"></i></p>
+		                </div>
+        			</a>
+		            <div id="slide-container">
+		                <div id="slider">
+		                    @html.RenderScheduleTimes(_data, true)
+		                </div>                
+		            </div>
+ 				</div>
+ 			<div id="middle-container">
+ 				<div id="dayColumn">
+<ul id="dayList">
+                    <li class="timeText">
+                        <p>All Times ET / PT</p>
+                    </li>
+                    @while(i < 7) {
+                    	var _d = new Date(model.schedule.Schedules[i].Date)
+                    	<li class="@(i == 0 ? 'firstDay' : 'restDays')">
+                    		<div><p>
+                    			@(i==0 ? 'TODAY' : weekday[_d.getDay()])
+                    		</p></div>
+                    	</li>
+                    	i++;
+                	}
+                </ul>
+ 				</div>
+ 				<div id="showsContainer">
+ 					<div id="showsContainerChild">
+ 						<ul id="timesList" class="times">
+ 							@html.RenderScheduleTimes(_data, false)
+ 						</ul>
+ 						@html.RenderScheduleHtml(schedules, timePosition)
+ 					</div>
+ 				</div>
+ 			</div>
+ 			</div>	
+ 		</div>
+	})
+
+})

@@ -14,4 +14,8 @@
     	next(null, seedData.sliders);
     };
 
+    data.getSchedule = function (next) {
+        next(null, seedData.schedule);
+    };
+
 })(module.exports);
