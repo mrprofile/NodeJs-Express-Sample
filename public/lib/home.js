@@ -1,7 +1,5 @@
 
 require(['./common'], function (common){
-
-	require(['app/views/home']);
-
+	require(['require', 'app/views/home']);
 });
 

@@ -1,0 +1,9 @@
+<ul class="slides">
+  @model.sliders.forEach(function(slide){
+    <li class="slide-wrapper" data-src="@slide.BackgroundUrl" data-url="@slide.WebPageUrl">               
+        <div class="slide-link"></div>
+        <div class="mobile-container"></div>
+        <a class="transparent-click-area" href="@slide.WebPageUrl"></a>
+    </li>        
+  })
+</ul> 

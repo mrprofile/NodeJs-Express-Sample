@@ -50,13 +50,14 @@
 				                        @model.showMenuItems.TopPromotedShows.forEach(function(item){
 				                          <li>
 				                            <a href="@item.RelativeUrl">
+
 				                              <div class="promo-show-item">
-				                                <img src="@item.ThumbImage" />
+				                                @html.RenderResizeImageUrl(item.ThumbImage, 374, 210)
 				                                <div class="promo-show-text show-info small">
 				                                  <span>@item.ShowName</span>
 				                                  <br />
 				                                  <div class="show-info small">
-
+                                                    @html.RenderTuneIn(item.Airtime, "small")
 				                                  </div>
 				                                </div>
 				                              </div>

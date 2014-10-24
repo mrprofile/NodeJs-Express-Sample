@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var lessMiddleware = require('less-middleware');
+var vash = require('vash');
 var app = express();
 
 // opt-in services
@@ -55,6 +56,59 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+//TODO: move this to its own file
+vash.helpers.RenderResizeImageUrl = function (imageUrl, width, height, useProd) {
+    var urlPattern = /^(https?:\/\/[^\/]+)?\/images\//i;
+    var urlPattern2 = /^(https?:\/\/[^\/]+)?\//i;
+    var baseUrl = "http://tv.esquire.com/images/";    
+    var slug = imageUrl.replace(urlPattern, "");
+    slug = slug.replace(urlPattern2, "");
+
+    var resizedImageUrl = baseUrl + "cimg_" + width + "x" + height + "/" + slug;
+
+    if(useProd){
+
+    } 
+
+    this.buffer.push('<img class="lazy" src="http://tv.esquire.com/images/static/global/blank.gif" data-original="'+ resizedImageUrl +'" />');
+
+
+};
+
+vash.helpers.RenderTuneIn = function (tuneIn, size) {
+    var pattern = /\[(time|badge|text)([^\]]+)\]/g;    
+    var strTuneIn = '';   
+    var matches = pattern.exec(tuneIn);// = tuneIn.match(pattern);   
+
+    while(matches != null) {        
+        switch(matches[1]){
+            case "time":
+                strTuneIn += '<div class="time-tag">';
+                strTuneIn += '<span class="time pacific ' + size + '">' + matches[2].trim() + "</span>";
+                strTuneIn += '</div>';
+            break;
+            case "badge":
+                strTuneIn += '<div class="show-info-day"><span class="day ';
+                strTuneIn += size;
+                strTuneIn += '">';
+                strTuneIn += matches[2].trim();
+                strTuneIn += "</span></div>";
+            break;
+            case "text":
+                strTuneIn += '<div class="show-info-text"><span class="';
+                strTuneIn += size;
+                strTuneIn += '">';
+                strTuneIn += matches[2].trim();
+                strTuneIn += "</span></div>";
+            break;
+        }
+
+        matches = pattern.exec(tuneIn);
+    }
+
+    this.buffer.push(strTuneIn);
+}
 
 // start server
 app.listen(1337);
