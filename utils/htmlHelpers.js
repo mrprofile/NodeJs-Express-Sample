@@ -118,9 +118,42 @@ vash.helpers.RenderScheduleHtml = function (schedules, timePosition) {
 
         this.buffer.push('</ul>');
         i++;
-    }
+    }    
+};
 
+vash.helpers.RenderScheduleMobileHtml = function (schedules, timePosition) {
 
-
+    var i = 0, j = 0, schedulesLength = schedules.Schedules.length, 
+    _id = '', _dayLength, _daySlots, _showDate, height, top;
     
+//style="width:@((_daySlots[j].Duration / 30 * 207) - 1)px;left: @(timePosition[_showDate] * 207)px;position:absolute;"
+    while ( i < schedulesLength - 1) {
+        _id = (i == 0) ? "today" : "day" + i;
+        _daySlots = schedules.Schedules[i].TimeSlots;
+        _dayLength = _daySlots.length;
+        j = 0;
+        this.buffer.push('<ul class="day' + i + '">');
+
+        while(j < _dayLength) {
+            _showDate = moment(_daySlots[j].TimeStart);
+            height = (_daySlots[j].Duration / 30 * 71);
+            top = timePosition[_showDate.format("HH:mm")] * 71;
+            this.buffer.push('<li class="'+ _daySlots[j].Show_Key + " day" + i + "-" + _showDate.format('H_mm') +'" style="position:absolute;height:' + height +'px;top:'+ top +'px;">');
+            this.buffer.push('<div class="showRow">');
+            this.buffer.push('<p class="show_title">');
+            if (_daySlots[j].IsPremiere)
+            {
+                this.buffer.push('<span class="premiere">New</span>');
+            }
+            this.buffer.push(schedules.Shows.Shows[_daySlots[j].Show_Key]);
+            this.buffer.push('</p>');
+            this.buffer.push('<p class="ep_title">' + _daySlots[j].Episode_Title + '</p>');
+            this.buffer.push('</div>');
+            this.buffer.push('</li>');
+            j++;
+        }
+
+        this.buffer.push('</ul>');
+        i++;
+    }    
 };

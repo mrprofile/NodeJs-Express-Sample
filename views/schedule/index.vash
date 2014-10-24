@@ -56,6 +56,31 @@
 	</div>
 
  		<div id="wrapper">
+ 			<div id="mobile-container">
+		        <div class="scheduleDay">
+		            <div class="timeText">
+		                <p><span>ALL TIMES ET / PT</span></p>
+		            </div>
+		            <div class="dayHeader">
+		                <select id="day-filter" style="display:none;">
+		                   @while( i < schedules.Schedules.length - 1) {
+		                   		var _day = schedules.Schedules[i];
+		                   		var _d = new Date(_day.Date);		                   		
+		                   		<option value="day@(i)">@(i == 0 ? "Today" : _day.Day) - @month[_d.getMonth()] @_d.getDate()</option>
+		                   		i++;
+		               		}
+
+		               		
+		                </select>               
+		            </div>
+		        </div>
+		        <div class="schedule-wrapper">
+		            <ul class="times">   
+		                @html.RenderScheduleTimes(_data, false)         
+		            </ul>
+		            @html.RenderScheduleMobileHtml(schedules, timePosition)
+		        </div>
+		    </div>
  			<div id="main-container">
  				<div id="top-container">
 					<a class="jump-link" href="#">
@@ -71,10 +96,11 @@
  				</div>
  			<div id="middle-container">
  				<div id="dayColumn">
-<ul id="dayList">
+				<ul id="dayList">
                     <li class="timeText">
                         <p>All Times ET / PT</p>
                     </li>
+                    @{ i = 0; }
                     @while(i < 7) {
                     	var _d = new Date(model.schedule.Schedules[i].Date)
                     	<li class="@(i == 0 ? 'firstDay' : 'restDays')">
@@ -101,6 +127,21 @@
 	})
 
 	@html.block("scripts", function(model){        
+		<script type="text/javascript">
+			var showIndexHash = {};
+
+			@{ 
+				var showKeys = Object.keys(model.schedule.Shows.Shows);
+				var k = 1; 
+			}
+			@showKeys.forEach(function(showKey){
+				<text>
+					showIndexHash[@showKey] = @k;
+				</text>		
+				k++;
+			});
+
+		</script>
     	<script type="text/javascript" src="lib/require.js" data-main="app/views/schedule.js"></script>
   	})
 

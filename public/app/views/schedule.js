@@ -54,6 +54,15 @@ require(['../../lib/common'], function (common){
 	        }
 	    });
 
+	    $('#day-filter').ddslick({
+	        width: '100%',
+	        background: '#1f2b3b',
+	        defaultSelectedIndex : 0,
+	        onSelected: function (data) {
+	            $(".schedule-wrapper ul[class^='day']").hide();
+	            $('.schedule-wrapper ul[class="' + data.selectedData.value + '"]').show();
+	        }
+	    });
 
 
      	$("#filter-list a").on("click", function (event) {
@@ -72,7 +81,7 @@ require(['../../lib/common'], function (common){
         $('#show-filter').ddslick('select', { index: showIndexHash[showId] });
     }
 
-    
+
     $(".jump-link").trigger("click");
 
 	    function filter(id) {
