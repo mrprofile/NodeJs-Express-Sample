@@ -100,7 +100,7 @@
 				          </div><!-- end shows-drop-down-->
                 	</li>
 	                <li class="btn_episodes" data_tracking="episodes"><a class="btn_episodes" data-tracking="episodes" href="/now">Full Episodes</a><i class="icon-nav-up-arrow"></i></li>
-                    <li class="btn_schedule" data_tracking="schedule"><a class="btn_schedule" data-tracking="schedule" href="/schedule">Schedule</a><i class="icon-nav-up-arrow"></i></li>
+                    <li class="btn_schedule @isSelected(model.controller, '/schedule')" data_tracking="schedule"><a class="btn_schedule" data-tracking="schedule" href="/schedule">Schedule</a><i class="icon-nav-up-arrow"></i></li>
                     <li class="btn_videos" data_tracking="videos"><a class="btn_videos" data-tracking="videos" href="/videos">Videos</a><i class="icon-nav-up-arrow"></i></li>
                     <li class="btn_blog" data_tracking="blog"><a class="btn_blog" data-tracking="blog" href="/blog">Blog</a><i class="icon-nav-up-arrow"></i></li>
     

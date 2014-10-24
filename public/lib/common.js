@@ -4,10 +4,14 @@ requirejs.config({
     jquery: 'jquery/dist/jquery',
     flexslider: 'flexslider/jquery.flexslider',
     "jquery.lazyload": 'lazyload/jquery.lazyload',
+    "jquery.ddslick" : 'ddslick/jquery.ddslick',
+    "jquery.ui" : 'jquery-ui-1.10.3.custom',
     app: '../app'
   },
   "shim" :{
-  	"jquery.lazyload" : ["jquery"]
+    "jquery.ui" : ["jquery"],
+  	"jquery.lazyload" : ["jquery"],
+    "jquery.ddslick" : ["jquery"]
   }
 });  
 
