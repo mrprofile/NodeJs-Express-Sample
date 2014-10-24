@@ -1,5 +1,12 @@
 @{
     var currentDate = new Date();
+
+    function isSelected(currentController, expectedController) {
+
+        if(currentController == expectedController) {
+            return ' selected';
+        }
+      }
 }
 
 <footer>
@@ -7,11 +14,11 @@
         <div class="container">
             <div class="footer-links">
                 <ul class="uppercase">
-                    <li><a href="/about">About</a></li>
+                    <li><a href="/about" class="@isSelected(model.controller, '/about')">About</a></li>
                     <li><a href="http://www.nbcunicareers.com/" target="_blank">Employment</a></li>
-                    <li><a href="/terms" class="@@Html.SelectedPage("Home", "Terms")">@@termsText</a></li>
+                    <li><a href="/terms" class="@isSelected(model.controller, '/terms')">Terms of Service</a></li>
                     <li><a href="http://www.nbcuni.com/privacy/" target="_blank">Privacy Notice</a></li>
-                    <li><a href="/adsales" class="@@Html.SelectedPage("Home", "Adsales")">Advertise With Us</a></li>
+                    <li><a href="/adsales" class="@isSelected(model.controller, '/adsales')">Advertise With Us</a></li>
                     <li><a href="http://corporate.comcast.com/news-information/nbcuniversal-transaction/independent-programming/" target="_blank">Independent Programming Report</a></li>
                 </ul>
                 <div class="footer-esquire-logo"></div><span class="footer-copy">&copy; @currentDate.getFullYear() Esquire Network, A Division of NBCUniversal</span>

@@ -1,0 +1,68 @@
+@html.extend("./layout", function(model){
+    
+@html.block("css", function(model){
+    <link rel="stylesheet" type="text/css" href="http://tv.esquire.com/Content/style/less/views/articles.less">
+})
+
+@html.block("body", function(model) {
+<header class="page-title">
+    <div class="page-title-container">
+        <div class="page-title-header-text uppercase centered"><h1><span>Welcome to the </span> Esquire Network</h1></div>
+    </div>
+</header>
+<div id="wrapper">
+    <div class="container">
+        <p class="video-area">
+            <iframe src="http://tv.esquire.com/videos/embed/9V5Q2RfrVCw=?ssid=esquire_no_ad" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="100%" height="574"></iframe>
+        </p>
+        <p>Advertising Sales Contacts<br />
+            For more information, please contact your sales representative:</p>
+        <div class="split">
+            <p><span class="header">New York</span><br />
+                1221 Avenue of the Americas<br />
+                New York, NY 10020<br />
+                212.664.4444</p>
+            <p>Linda Yaccarino<br />
+                President, Advertising Sales<br />
+                NBCU<br />
+                <a href="mailto:linda.yaccarino@nbcuni.com">linda.yaccarino@nbcuni.com</a></p>
+            <p>Laura Molen<br />
+                Executive Vice President, Cable Ad Sales<br />
+                <a href="mailto:laura.molen@nbcuni.com">laura.molen@nbcuni.com</a></p>
+            <p>Leigh Anne Pavia<br />
+                Vice President, Esquire Network Ad Sales<br />
+                <a href="mailto:leighanne.pavia@nbcuni.com">leighanne.pavia@nbcuni.com</a></p>
+            <p><span class="header">Detroit</span><br />
+                3001 W. Big Beaver Road<br />
+                Suite 608<br />
+                Troy, MI 48084<br />
+                248.822.0260</p>
+            <p>Ed Dzurko<br />
+                Vice President, Ad Sales<br />
+                <a href="mailto:edward.dzurko@nbcuni.com">edward.dzurko@nbcuni.com</a></p>
+        </div>
+        <div class="split">
+            <p><span class="header">Los Angeles</span><br />
+                100 Universal City Plaza<br />
+                Bldg 9128/3<br />
+                Universal City, CA 91608<br />
+                818.777.1000</p>
+            <p>Cherie Cohen<br />
+                Senior Vice President, Portfolio Sales<br />
+                <a href="mailto:cherie.cohen@nbcuni.com">cherie.cohen@nbcuni.com</a></p>
+            <p>Carla O'Neill<br />
+                Vice President, Lifestyle Sales<br />
+                <a href="mailto:carla.o&rsquo;neill@nbcuni.com">carla.o&rsquo;neill@nbcuni.com</a></p>
+            <p><span class="header">Chicago</span><br />
+                454 N. Columbus Drive<br />
+                4th Floor<br />
+                Chicago, IL 60611<br />
+                312.836.5555</p>
+            <p>Holly Miller<br />
+                Vice President, Lifestyle Ad Sales<br />
+                <a href="mailto:holly.miller@nbcuni.com">holly.miller@nbcuni.com</a></p>
+        </div>
+    </div>
+</div>
+    })
+})

@@ -1,0 +1,25 @@
+﻿@html.extend('./layout', function(model){
+  @html.block("body", function(model){
+
+<header class="page-title">
+    <div class="page-title-container">
+        <div class="page-title-header-text uppercase"><h1><span>About</span> Esquire Network</h1></div>
+    </div>
+</header>
+<div id="wrapper">
+    <div class="content">
+      <p>Esquire Network is a lifestyle and entertainment network featuring programming that speaks to classic and contemporary passions and interests, from fashion and style to food and drink, travel and women and relationships. Building on Esquire&rsquo;s 80 years of unparalleled insight into what makes men tick, the network will debut September 23, 2013 in 75 million homes nationwide, as well as online, mobile, On Demand, Esquire TV Now (TVE) and other platforms. Esquire Network is a strategic partnership between NBCUniversal and Hearst Magazines, and is a unit of NBCUniversal Cable Entertainment, a division of NBCUniversal.</p>
+    </div>
+    <aside>
+        <div id="right-ad" class="right-item">
+            @html.include('./modules/rightad', model)          
+        </div>
+    </aside>
+  </div>
+  })
+
+  @html.block("css", function(model){
+
+  	<link rel="stylesheet" type="text/css" href="http://tv.esquire.com/Content/style/less/views/articles.less">
+  })
+})
