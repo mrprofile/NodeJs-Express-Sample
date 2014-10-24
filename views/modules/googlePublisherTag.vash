@@ -1,0 +1,73 @@
+<script type="text/javascript">
+    // Googe GPT code start
+    var googletag = googletag || {}, ESQTV = window.ESQTV || {};
+    googletag.cmd = googletag.cmd || [];
+    ESQTV.ads = window.ESQTV.ads || {};
+
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+
+        if (gads.readyState) {  //IE
+            gads.onreadystatechange = function () {
+                if (gads.readyState == "loaded" || gads.readyState == "complete") {
+                    gads.onreadystatechange = null;
+                    if (top.__nbcudigitaladops_inject && top.__nbcudigitaladops_inject.getGPT) {
+                        var _GPT_params = top.__nbcudigitaladops_inject.getGPT();
+                        for (var _key in _GPT_params) {
+                            if (_GPT_params.hasOwnProperty(_key)) {
+                                googletag.pubads().setTargeting(_key, _GPT_params[_key]);
+                            }
+                        }
+                    }
+                }
+            };
+        } else {  //Others
+            gads.onload = function () {
+                if (top.__nbcudigitaladops_inject && top.__nbcudigitaladops_inject.getGPT) {
+                    var _GPT_params = top.__nbcudigitaladops_inject.getGPT();
+                    for (var _key in _GPT_params) {
+                        if (_GPT_params.hasOwnProperty(_key)) {
+                            googletag.pubads().setTargeting(_key, _GPT_params[_key]);
+                        }
+                    }
+                }
+            };
+        }
+
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+</script>
+<script>
+    var kw = '@model.AdKeywords', sizes = '@model.AdSizes';
+    googletag.cmd.push(function () {
+        var kwArray = [];
+        if (kw != '') {
+            
+            kwArray = kw.toLowerCase().split(' ').join('_').split(',');            
+        }
+
+        googletag.defineOutOfPageSlot('/2620/esquire/@model.AdZone.replace("'","")', 'interstitial-ad')
+            .addService(googletag.pubads())
+            .setTargeting('akw', kwArray)
+            .setCollapseEmptyDiv(true,true);
+
+        googletag.defineSlot('/2620/esquire/@model.AdZone.replace("'","")', @model.AdSizes, 'ad-300-250')
+            .addService(googletag.pubads())
+            .setTargeting('akw', kwArray);
+
+        googletag.defineSlot('/2620/esquire/@model.AdZone.replace("'","")',[[728, 90],[970,90],[970,250]], 'top-ad')
+            .addService(googletag.pubads())
+            .setTargeting('akw', kwArray)
+            .setCollapseEmptyDiv(true,true);
+        
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+        
+    });
+</script>

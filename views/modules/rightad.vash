@@ -1,0 +1,4 @@
+<div id="ad-300-250" data-ad-zone="@model.AdZone" data-ad-size="@model.AdSizes" data-ad-keyword="@model.AdKeywords", data-ad-position="2", data-ad-device="all", data-ad-type="block">
+    <script type="text/javascript">googletag.cmd.push(function () { googletag.display('ad-300-250'); });</script>
+</div>
+<div class="ad-header uppercase">Advertisement</div>

@@ -12,11 +12,17 @@
 <header id="main-header">
     <a href="http://www.esquire.com" id="mobile-home"><div>Back To</div><div>Esquire</div></a>   
     <div id="header-background">
+        <div id="interstitial-ad" style="display: none; position:absolute; top: 0; left: 0;" data-ad-zone="@model.AdZone" data-ad-size="[]" data-ad-keyword="@model.AdKeywords", data-ad-position="0", data-ad-device="all", data-ad-type="interstitial">
+        <script type="text/javascript">googletag.cmd.push(function () { googletag.display('interstitial-ad'); });</script>
+    </div>
+    <div style="display: none;" id='top-ad' data-ad-zone="@model.AdZone" data-ad-size="[[728, 90],[970,90],[970,250]]" data-ad-keyword="@model.AdKeywords" data-ad-position="1" data-ad-device="desktop" data-ad-type="block">
+        <script type="text/javascript">googletag.cmd.push(function () { googletag.display('top-ad'); });</script>
+    </div>
  		<div id="mobile-header"></div>
  		 <div id="header-logo">
             <a href="http://www.esquire.com"><div id="esquire-logo"></div></a>
         </div>
-    </div>    
+    </div>        
     <a href="#" id="mobile-menu"></a>
     <div class="page-header">
         <div id="esquire-nav">

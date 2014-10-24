@@ -5,6 +5,9 @@ function basePageModel(metaData, req) {
     this.metaData = metaData;
     this.controller = req.route.path;
     this.menuItems = {};
+    this.AdKeywords = '';
+    this.AdZone = 'homepage';
+    this.AdSizes = '[[300,250],[300,600]]';
 }
 
 basePageModel.prototype.getDefault =  {

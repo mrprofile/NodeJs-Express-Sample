@@ -13,6 +13,8 @@
             var model = new basePageModel({ title: 'Esquire Network Television Shows'}, req);
             var homeObjects = _(true, homeObjects, model.getDefault);
 
+            model.AdZone = "shows";
+
             homeObjects["shows"] = function (callback) {
 
                 data.getFeatured(function (err, results){

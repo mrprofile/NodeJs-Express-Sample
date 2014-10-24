@@ -15,8 +15,9 @@
   }
 
   @{
-    var shows = model.shows.PromotedShows;
+    
     var topShow = model.shows.TopPromotedShows.splice(0, 1 );
+    var shows = model.shows.TopPromotedShows.concat(model.shows.PromotedShows);
   }
       
     <div id="wrapper">
@@ -35,16 +36,14 @@
             <p>@topShow[0].ShowDescription</p>
           </div><!-- end show-description -->
           <div id="right-ad" class="right-item">
-                @* TODO: 
-                    Html.RenderPartial("Shared/Modules/RightAd", Model);   
-                 *@
+            @html.include('./modules/rightad', model)                
             </div><!-- end right-ad -->
         </div><!-- end container -->
       </div><!-- end main-shows -->
       <div id="more-shows">
         <div class="container">
           <ul class="other-shows">
-          @model.shows.PromotedShows.forEach(function(show){
+          @shows.forEach(function(show){
           <li>
               <a href="@show.RelativeUrl" data-tracking="@show.ShowName.replace(' ','-')">
                   @html.RenderResizeImageUrl(show.ThumbImage, 244, 137)
