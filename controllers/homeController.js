@@ -5,8 +5,24 @@
     var async = require('async');
     var _ = require('extend');
     var basePageModel = require("../models/page.js");
+    var stringUtil = require("../utils/stringHelpers.js");
 
     homeController.init = function(app) {
+
+        app.use(function(req, res, next) {
+            //console.log(req.url);
+
+            data.getShortcut(function (err, results){
+                if(req.url.count('/') == 1) {
+                    if(req.url in results) {
+                        //console.log('pre process request in for shortcut');
+                        //console.log(results[req.url].redirect)
+                        res.redirect(results[req.url].redirect);
+                    }
+                }
+                next();
+            });
+        });
 
         app.get('/', function(req, res) {
 

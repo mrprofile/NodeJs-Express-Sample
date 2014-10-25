@@ -18,4 +18,8 @@
         next(null, seedData.schedule);
     };
 
+    data.getShortcut = function (next) {
+        next(null, seedData.shortCutMap);
+    };
+
 })(module.exports);

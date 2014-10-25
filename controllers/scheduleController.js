@@ -33,8 +33,6 @@
                 _timeIncrement++;           
             }
 
-            
-
             homeObjects["schedule"] = function (callback) {
 
                 data.getSchedule(function (err, results){
