@@ -1,5 +1,5 @@
 @{
-  var showList = model.showMenuItems.PromotedShows.slice(0, 9);
+  var showList = (model.showMenuItems) ? model.showMenuItems.PromotedShows.slice(0, 9) : [];
 
   function isSelected(currentController, expectedController) {
 

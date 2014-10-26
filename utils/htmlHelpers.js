@@ -10,10 +10,6 @@ vash.helpers.RenderResizeImageUrl = function (imageUrl, width, height, useProd) 
 
     var resizedImageUrl = baseUrl + "cimg_" + width + "x" + height + "/" + slug;
 
-    if(useProd){
-
-    } 
-
     this.buffer.push('<img class="lazy" src="http://tv.esquire.com/images/static/global/blank.gif" data-original="'+ resizedImageUrl +'" />');
 
 
