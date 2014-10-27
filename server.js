@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var lessMiddleware = require('less-middleware');
 var vashHelpers = require('./utils/htmlHelpers');
+var vash = require('vash');
 var app = express();
 
 // opt-in services
@@ -20,7 +21,8 @@ var webControllers = require("./controllers");
 var apiControllers = require("./apicontrollers");
 
 // view engine setup
-app.set('view engine', "vash");
+app.set('view engine', "html");
+app.engine('html', vash.__express);
 
 // map routes
 webControllers.init(app);
@@ -62,4 +64,4 @@ if (app.get('env') === 'development') {
 }
 
 // start server
-app.listen(1337);
+app.listen(process.env.PORT);
