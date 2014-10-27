@@ -4,7 +4,6 @@
 shortCut['/the-getaway'] = { redirect : "/shows", isExternal : false };
 shortCut['/white-collar-brawlers'] =  { redirect : "/shows", isExternal : false };
 shortCut['/i-am-johnny'] =  { redirect : "/shows", isExternal : false };
-shortCut['/about'] =  { redirect : "/shows", isExternal : false };
 
 (function(seedData) {
 
