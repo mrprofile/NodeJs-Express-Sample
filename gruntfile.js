@@ -28,8 +28,8 @@ module.exports = function(grunt){
             }
         },
         watch: {
-          server: {
-            files: ['.rebooted'],
+          all: {
+            files: ['.rebooted', 'views/**/*.html'],
             options: {
               livereload: true
             }
