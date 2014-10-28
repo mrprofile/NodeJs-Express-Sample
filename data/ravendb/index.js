@@ -54,4 +54,44 @@
         });
     }
 
+    data.getShowPackage = function(showPackageName, next) {
+        database.getDb(function(err, db) {
+
+            if(err) {
+                next(err, null);
+            } else {                
+                db.queryByIndex("ShowPackages/BySlug", { Slug: showPackageName }, 0, 1, null, function(err, results){
+
+                   // console.log("results:" + results.body);
+
+                    next(null, JSON.parse(results.body).Results[0]);
+                });
+            }
+
+        });
+
+    }
+
+    //PublishDate = doc.PublishDate, WebPageUrl = doc.WebPageUrl
+    data.getShowPromotions = function(showPackageName, next){
+
+        database.getDb(function(err, db){
+            if(err)
+            {
+                next(err,null);
+            }
+            else{
+
+                var theQuery = {
+                    WebPageUrl: "/shows/" + showPackageName + "/"                    
+                };
+
+                db.queryByIndex("Promotions/Index", theQuery, 0, 4, null,  function(err, results){
+                    
+                    next(err, JSON.parse(results.body).Results);
+                })
+            }
+        });
+    }
+
 })(module.exports);

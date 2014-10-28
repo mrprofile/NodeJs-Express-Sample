@@ -1,0 +1,59 @@
+@html.extend('./layout', function(model){
+
+  @html.block("css", function(model){
+    <link href="http://tv.esquire.com/bundles/style/less/shows?v=uDsd0XsDp0FO5Tf-fJ9eMd_3I6PLZH2kbBTCmkU7ug81" rel="stylesheet">   
+  })
+
+  @html.block("pageTitle", function (model){
+    @html.include('./modules/pageTitle', model.show.ShowPackageName)  
+  })
+
+  @html.block("body", function(model){
+
+  @{
+
+      var promoDictionary = {};
+      var promos = model.promos;
+      promos.forEach(function(promo){
+
+        promoDictionary[promo.SlotName.replace(/[\s]+/g, "")] = {
+          Title : promo.Title,
+          ImageUrl : promo.ImageUrl,
+          LinkUrl : promo.LinkUrl,
+          Html: '<li><img src="'+ promo.ImageUrl +'"/><p>'+ promo.Title +'</p><a class="promo-click-area" href="'+ promo.LinkUrl +'"></a></li>'
+        };
+
+      });
+
+  }
+
+  @if(model.error)
+  {
+    <p>Error occured: @model.error</p>
+  }
+        
+    <div id="wrapper">    
+      <div class="image-container" data-img-src="@model.show.BackgroundImage">
+          <img src="@model.show.BackgroundImage" class="show-image" />
+      </div>
+      <div class="promo-block">
+        <div class="container">
+            <ul>
+                @html.raw(promoDictionary.PromoSlot1.Html)
+                @html.raw(promoDictionary.PromoSlot2.Html)
+                @html.raw(promoDictionary.PromoSlot3.Html)
+                @html.raw(promoDictionary.PromoSlot4.Html)
+            </ul>
+
+            
+        </div>
+    </div>
+    </div><!-- end wrapper -->
+      
+  
+  })
+
+  @html.block("scripts", function(model){        
+    <script type="text/javascript" src="/lib/require.js" data-main="/lib/common.js"></script>
+  })
+})

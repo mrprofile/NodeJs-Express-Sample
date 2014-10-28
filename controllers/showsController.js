@@ -33,24 +33,32 @@
 
         app.get('/shows/:showPackageName', function (req, res){
 
+            var showPackageName = req.params.showPackageName;
             var basePageModel = require("../models/page.js");
             var model = new basePageModel({ title: 'Esquire Network Television Shows'}, req);
             var homeObjects = _(true, homeObjects, model.getDefault);
-
+           
             model.AdZone = "shows";
 
-            homeObjects["shows"] = function (callback) {
+            homeObjects.show = function (callback) {
 
-                data.getFeatured(function (err, results){
+                ravendb.getShowPackage(showPackageName, function(err, results){
                     callback(null, results);
-                });   
+                });
                 
-            };                
+            }; 
+
+            homeObjects.promos = function (callback) {
+                ravendb.getShowPromotions(showPackageName, function(err, results){
+                    callback(null, results);
+                });
+            }               
 
             async.parallel(homeObjects, function(err, results){
                if(!err) {
-                   model = _(true, model, results);                   
-                   res.render('./shows/index', model);
+                   model = _(true, model, results);                                      
+                   
+                   res.render('./shows/detail', model);
                } 
             });
 

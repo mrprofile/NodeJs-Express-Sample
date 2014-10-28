@@ -1,7 +1,7 @@
 (function (database) {
 
     var ravendb = require("ravendb");    
-    var ravenUrl = "http://10.128.36.191:8080";
+    var ravenUrl = "http://localhost:8080";
     var dbName = "esqtv";
     var theDb = null;
 
@@ -21,7 +21,12 @@
         cb = count;
         count = null;
         }
-        url = "" + (this.getIndexUrl(index)) + "?start=" + start + "&pageSize=" + count + "&aggregation=None" + "&sort=" + sort;
+        url = "" + (this.getIndexUrl(index)) + "?start=" + start + "&pageSize=" + count + "&aggregation=None";
+
+        if(sort != null) {
+            url += + "&sort=" + sort;
+        }
+        
         if (query != null) {
         url += "&query=" + (this.luceneQueryArgs(query));
         }
