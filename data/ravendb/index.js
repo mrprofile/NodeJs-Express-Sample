@@ -62,9 +62,14 @@
             } else {                
                 db.queryByIndex("ShowPackages/BySlug", { Slug: showPackageName }, 0, 1, null, function(err, results){
 
-                   // console.log("results:" + results.body);
+                   var res = JSON.parse(results.body);
 
-                    next(null, JSON.parse(results.body).Results[0]);
+                   if(res.Results.length == 0) {
+                        var error = { error : { status: 404, message: 'Show package not found' } };
+                        next(error, null);
+                    } else {
+                        next(null, res.Results[0] );
+                    }
                 });
             }
 
@@ -74,7 +79,6 @@
 
     //PublishDate = doc.PublishDate, WebPageUrl = doc.WebPageUrl
     data.getShowPromotions = function(showPackageName, next){
-
         database.getDb(function(err, db){
             if(err)
             {
@@ -83,13 +87,28 @@
             else{
 
                 var theQuery = {
-                    WebPageUrl: "/shows/" + showPackageName + "/"                    
+                    WebPageUrl: "/shows/" + showPackageName + "/"
                 };
 
                 db.queryByIndex("Promotions/Index", theQuery, 0, 4, null,  function(err, results){
                     
                     next(err, JSON.parse(results.body).Results);
                 })
+            }
+        });
+    }
+
+    data.getPromotionItems = function(query, next) {        
+        database.getDb(function(err, db){
+
+            if(err) {
+                next(err, null);
+            } else {                
+                var theQuery = 'WebPageUrl:"' + query.WebPageUrl + '" AND SlotName:"' + query.SlotName + '" AND ' + "PublishDate:[* TO " + moment().format('YYYY-MM-DDTHH:mm:ss.sssZ') + "]";// AND -PublishDate: 00010101000000000";
+
+                db.rawQueryByIndex("Promotions/Index", theQuery, 0, 1, "-PublishDate",  function(err, results){      
+                    next(null, JSON.parse(results.body).Results);
+                });
             }
         });
     }

@@ -1,6 +1,12 @@
 @{
   var showList = (model.showMenuItems) ? model.showMenuItems.PromotedShows.slice(0, 9) : [];
 
+  if (typeof String.prototype.startsWith != 'function') {
+      String.prototype.startsWith = function (str){
+        return this.slice(0, str.length) == str;
+      };
+    };
+
   function isSelected(currentController, expectedController) {
 
     if(currentController == expectedController) {
@@ -55,7 +61,7 @@
 				                      <ul>
 				                        @model.showMenuItems.TopPromotedShows.forEach(function(item){
 				                          <li>
-				                            <a href="@item.RelativeUrl">
+				                            <a href="@(item.RelativeUrl.startsWith('/') ? '' : '/')@item.RelativeUrl">
 
 				                              <div class="promo-show-item">
 				                                @html.RenderResizeImageUrl(item.ThumbImage, 374, 210)
@@ -83,7 +89,7 @@
 				                        }
 
 				                        <li>
-				                          <a href="@show.RelativeUrl"><span>@show.ShowName</span></a>
+				                          <a href="@(show.RelativeUrl.startsWith('/') ? '' : '/')@show.RelativeUrl"><span>@show.ShowName</span></a>
 				                        </li>
 				                        if(i== showList.length -1){
 				                          if(showList.length == 5){

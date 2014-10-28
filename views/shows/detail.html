@@ -4,27 +4,12 @@
     <link href="http://tv.esquire.com/bundles/style/less/shows?v=uDsd0XsDp0FO5Tf-fJ9eMd_3I6PLZH2kbBTCmkU7ug81" rel="stylesheet">   
   })
 
-  @html.block("pageTitle", function (model){
-    @html.include('./modules/pageTitle', model.show.ShowPackageName)  
-  })
 
   @html.block("body", function(model){
 
   @{
-
       var promoDictionary = {};
       var promos = model.promos;
-      promos.forEach(function(promo){
-
-        promoDictionary[promo.SlotName.replace(/[\s]+/g, "")] = {
-          Title : promo.Title,
-          ImageUrl : promo.ImageUrl,
-          LinkUrl : promo.LinkUrl,
-          Html: '<li><img src="'+ promo.ImageUrl +'"/><p>'+ promo.Title +'</p><a class="promo-click-area" href="'+ promo.LinkUrl +'"></a></li>'
-        };
-
-      });
-
   }
 
   @if(model.error)
@@ -39,10 +24,10 @@
       <div class="promo-block">
         <div class="container">
             <ul>
-                @html.raw(promoDictionary.PromoSlot1.Html)
-                @html.raw(promoDictionary.PromoSlot2.Html)
-                @html.raw(promoDictionary.PromoSlot3.Html)
-                @html.raw(promoDictionary.PromoSlot4.Html)
+              <li><img src='@(promos.promo1.ImageUrl)'/><p> @promos.promo1.Title</p><a class="promo-click-area" href="@promos.promo1.LinkUrl"></a></li>
+              <li><img src='@(promos.promo2.ImageUrl)'/><p> @promos.promo2.Title</p><a class="promo-click-area" href="@promos.promo2.LinkUrl"></a></li>
+              <li><img src='@(promos.promo3.ImageUrl)'/><p> @promos.promo3.Title</p><a class="promo-click-area" href="@promos.promo3.LinkUrl"></a></li>
+              <li><img src='@(promos.promo4.ImageUrl)'/><p> @promos.promo4.Title</p><a class="promo-click-area" href="@promos.promo4.LinkUrl"></a></li>
             </ul>
 
             

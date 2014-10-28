@@ -29,7 +29,7 @@ module.exports = function(grunt){
         },
         watch: {
           all: {
-            files: ['.rebooted', 'views/**/*.html'],
+            files: ['.rebooted', 'views/**/*.html', 'public/css/*.less'],
             options: {
               livereload: true
             }
@@ -41,5 +41,5 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     //grunt.loadNpmTasks('grunt-inject');
     grunt.loadNpmTasks('grunt-concurrent');
-    grunt.registerTask('default', ['concurrent:dev']);
+    grunt.registerTask('serve', ['concurrent:dev']);
 };
