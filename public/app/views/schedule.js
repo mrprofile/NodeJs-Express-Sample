@@ -1,4 +1,4 @@
-require(['../../lib/common'], function (common){
+require(['/lib/common.js'], function (common){
 	require(['require', 'jquery', 'jquery.ui', 'jquery.ddslick'], function(require, jquery, jqueryui, ddslick){
 
 		$(".jump-link").on("click", function (event) {

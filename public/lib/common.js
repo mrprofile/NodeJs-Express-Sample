@@ -1,5 +1,5 @@
 requirejs.config({
-  baseUrl: 'lib',
+  baseUrl: '/lib',
   paths: {
     jquery: 'jquery/dist/jquery',
     flexslider: 'flexslider/jquery.flexslider',
